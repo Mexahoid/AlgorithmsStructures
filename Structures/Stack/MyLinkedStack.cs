@@ -17,11 +17,15 @@ namespace Structures.Stack
 
         public T Peek()
         {
+            if (IsEmpty)
+                throw new ArgumentOutOfRangeException();
             return _head.Value;
         }
 
         public T Pop()
         {
+            if (IsEmpty)
+                throw new ArgumentOutOfRangeException();
             T ret = _head.Value;
             _head = _head.Next;
             return ret;
