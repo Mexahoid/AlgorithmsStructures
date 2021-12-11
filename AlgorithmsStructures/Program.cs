@@ -2,15 +2,49 @@
 using Structures.List;
 using Structures.Stack;
 using Structures.Queue;
+using Structures.Tree;
 
 Console.WriteLine($"Hello, World!");
 
+TestBinaryTree();
+//TestQueues();
+//TestLists();
+//TestStacks();
 
-TestQueues();
-TestLists();
-TestStacks();
 
+static void TestBinaryTree()
+{
+    Console.WriteLine("=== Binary tree tests.");
+    Console.WriteLine("Making tree..");
+    MyBinaryTree<int> myBinaryTree = new();
 
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling tree..");
+    for (int i = 0; i < count; i++)
+    {
+        myBinaryTree.Insert(r.Next(0, 100));
+    }
+
+    Console.WriteLine("Deep first..");
+    List<int> nlr = new();
+    myBinaryTree.DeepFirst(nlr, MyBinaryTree<int>.TreeSearchType.NLR);
+    List<int> lnr = new();
+    myBinaryTree.DeepFirst(lnr, MyBinaryTree<int>.TreeSearchType.LNR);
+    List<int> lrn = new();
+    myBinaryTree.DeepFirst(lrn, MyBinaryTree<int>.TreeSearchType.LRN);
+    Console.WriteLine("Breadth first..");
+    List<int> br = new();
+    myBinaryTree.BreadthFirst(br);
+
+    for (int i = 0; i < nlr.Count; i++)
+    {
+        Console.WriteLine($"{nlr[i]}  --  {lnr[i]}  --  {lrn[i]}  ---  {br[i]}");
+    }
+
+}
 
 static void TestQueues()
 {
@@ -121,8 +155,6 @@ static void TestQueues()
     Console.WriteLine("=== End.");
 }
 
-
-
 static void TestStacks()
 {
     Console.WriteLine("=== Stack tests.");
@@ -181,8 +213,6 @@ static void TestStacks()
 
     Console.WriteLine("=== End.");
 }
-
-
 
 static void TestLists()
 {
