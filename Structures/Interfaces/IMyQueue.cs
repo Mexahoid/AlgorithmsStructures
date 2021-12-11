@@ -12,8 +12,6 @@ namespace Structures.Interfaces
 
         public void Enqueue(T item);
 
-        public void Enqueue(IEnumerable<T> items);
-
         public T Dequeue();
     }
 }
