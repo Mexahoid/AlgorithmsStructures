@@ -1,5 +1,5 @@
 ﻿
-namespace Structures.Common
+namespace Structures.Interfaces
 {
     internal interface INode<T>
     {

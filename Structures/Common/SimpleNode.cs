@@ -1,4 +1,5 @@
-﻿
+﻿using Structures.Interfaces;
+
 namespace Structures.Common
 {
     internal class SimpleNode<T> : INode<T>
