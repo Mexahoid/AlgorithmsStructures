@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsStructures", "AlgorithmsStructures\AlgorithmsStructures.csproj", "{045EF279-1A04-4FDC-9932-099F8116B5BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C63852B-D1C9-4BDA-88B2-D396470D66D4} = {9C63852B-D1C9-4BDA-88B2-D396470D66D4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Structures\Structures.csproj", "{9C63852B-D1C9-4BDA-88B2-D396470D66D4}"
 EndProject
