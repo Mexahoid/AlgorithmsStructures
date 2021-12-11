@@ -13,5 +13,7 @@ namespace Structures.Interfaces
         public void Enqueue(T item);
 
         public T Dequeue();
+
+        public T Peek();
     }
 }
