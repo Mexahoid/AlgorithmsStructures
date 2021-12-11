@@ -1,18 +1,69 @@
 ﻿using Structures.Interfaces;
 using Structures.List;
 using Structures.Stack;
+using Structures.Queue;
 
 Console.WriteLine($"Hello, World!");
 
 
-
+TestQueues();
 TestLists();
 TestStacks();
 
 
+
+static void TestQueues()
+{
+    Console.WriteLine("=== Queue tests.");
+
+    Console.WriteLine("== Making queues..");
+    IMyQueue<int> linkedQueue = new MyLinkedQueue<int>();
+
+    int count = 10;
+    Console.WriteLine("== Filling queues..");
+    Console.WriteLine("Linked");
+    for (int i = 0; i < count; i++)
+    {
+        linkedQueue.Enqueue(i);
+    }
+
+    Console.WriteLine("== Clearing queues..");
+    Console.WriteLine("Linked");
+    while (!linkedQueue.IsEmpty)
+    {
+        Console.WriteLine($">> {linkedQueue.Dequeue()}");
+    }
+
+    Console.WriteLine("== Filling queues..");
+    Console.WriteLine("Linked");
+    for (int i = 0; i < count; i++)
+    {
+        linkedQueue.Enqueue(i);
+    }
+    Console.WriteLine("== Circulating queues..");
+    Console.WriteLine("Linked");
+    for (int i = 0; i < count; i++)
+    {
+        var val = linkedQueue.Dequeue();
+        Console.WriteLine($">> {val}");
+        linkedQueue.Enqueue(i);
+    }
+
+    Console.WriteLine("== Clearing queues..");
+    Console.WriteLine("Linked");
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($">> {linkedQueue.Dequeue()}");
+    }
+
+    Console.WriteLine("=== End.");
+}
+
+
+
 static void TestStacks()
 {
-    Console.WriteLine("== Stack tests.");
+    Console.WriteLine("=== Stack tests.");
 
     Console.WriteLine("== Making stacks..");
     IMyStack<int> linkedStack = new MyLinkedStack<int>();
@@ -66,14 +117,14 @@ static void TestStacks()
         arrayStack.Push(val);
     }
 
-    Console.WriteLine("== End.");
+    Console.WriteLine("=== End.");
 }
 
 
 
 static void TestLists()
 {
-    Console.WriteLine("== List tests.");
+    Console.WriteLine("=== List tests.");
     Console.WriteLine("== Making lists..");
 
     IMyList<int> arrayList = new MyArrayList<int>(8);
@@ -206,6 +257,6 @@ static void TestLists()
     {
         Console.WriteLine($">> {unrolledList[i]}");
     }
-    Console.WriteLine("== End.");
+    Console.WriteLine("=== End.");
 
 }
