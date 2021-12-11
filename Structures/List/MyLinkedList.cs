@@ -1,23 +1,11 @@
 ﻿using Structures.Interfaces;
+using Structures.Common;
 
 namespace Structures.List
 {
     public class MyLinkedList<T> : IMyList<T>
     {
-        private class Node
-        {
-            public T Value { get; set; }
-
-            public Node Next { get; set; }
-
-            public Node(T input)
-            {
-                Value = input;
-                Next = null;
-            }
-        }
-
-        private Node _head;
+        private Node<T> _head;
         private int _count;
 
         public int Count { get => _count; }
@@ -30,7 +18,7 @@ namespace Structures.List
 
         public void Add(T input)
         {
-            Node node = new(input);
+            Node<T> node = new(input);
             node.Next = _head;
             _head = node;
             _count++;
@@ -49,7 +37,7 @@ namespace Structures.List
                 return;
             }
 
-            Node node = _head;
+            Node<T> node = _head;
             int i = _count - 1;
 
             while (i > index + 1)
@@ -64,7 +52,7 @@ namespace Structures.List
 
         public void Remove(T value)
         {
-            Node node = _head;
+            Node<T> node = _head;
 
             if (node.Value.Equals(value))
             {
@@ -97,7 +85,7 @@ namespace Structures.List
                 if (index < 0 || index >= _count)
                     throw new IndexOutOfRangeException();
 
-                Node node = _head;
+                Node<T> node = _head;
                 int i = _count - 1;
 
                 while (i > index)
@@ -113,7 +101,7 @@ namespace Structures.List
                 if (index < 0 || index >= _count)
                     throw new IndexOutOfRangeException();
 
-                Node node = _head;
+                Node<T> node = _head;
                 int i = _count - 1;
 
                 while (i > index)
