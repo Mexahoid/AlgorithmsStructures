@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Structures.Interfaces
 {
-    internal interface IMyQueue<T>
+    public interface IMyQueue<T>
     {
         public bool IsEmpty { get; }
 
