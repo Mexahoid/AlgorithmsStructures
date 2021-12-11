@@ -1,11 +1,55 @@
 ﻿using Structures.Interfaces;
 using Structures.List;
+using Structures.Stack;
 
 Console.WriteLine($"Hello, World!");
 
 
 
 TestLists();
+TestStacks();
+
+
+static void TestStacks()
+{
+    Console.WriteLine("== Stack tests.");
+
+    Console.WriteLine("== Making stacks..");
+    IMyStack<int> linkedStack = new MyLinkedStack<int>();
+    IMyStack<int> linkedStack2 = new MyLinkedStack<int>();
+
+
+    int count = 10;
+    Console.WriteLine("== Filling stacks..");
+    for (int i = 0; i < count; i++)
+    {
+        linkedStack.Push(i);
+    }
+
+    Console.WriteLine("== Moving stacks..");
+
+    Console.WriteLine("Linked");
+    while (!linkedStack.IsEmpty)
+    {
+        int val = linkedStack.Pop();
+        Console.WriteLine($">> {val}");
+        linkedStack2.Push(val);
+    }
+
+
+
+    Console.WriteLine("== Moving stacks..");
+    Console.WriteLine("Linked");
+    while (!linkedStack2.IsEmpty)
+    {
+        int val = linkedStack2.Pop();
+        Console.WriteLine($">> {val}");
+        linkedStack.Push(val);
+    }
+
+    Console.WriteLine("== End.");
+}
+
 
 
 static void TestLists()
