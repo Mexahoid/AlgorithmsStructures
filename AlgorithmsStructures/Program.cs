@@ -18,12 +18,16 @@ static void TestStacks()
     IMyStack<int> linkedStack = new MyLinkedStack<int>();
     IMyStack<int> linkedStack2 = new MyLinkedStack<int>();
 
+    IMyStack<int> arrayStack = new MyArrayStack<int>(8);
+    IMyStack<int> arrayStack2 = new MyArrayStack<int>(8);
+
 
     int count = 10;
     Console.WriteLine("== Filling stacks..");
     for (int i = 0; i < count; i++)
     {
         linkedStack.Push(i);
+        arrayStack.Push(i);
     }
 
     Console.WriteLine("== Moving stacks..");
@@ -36,6 +40,13 @@ static void TestStacks()
         linkedStack2.Push(val);
     }
 
+    Console.WriteLine("Array");
+    while (!arrayStack.IsEmpty)
+    {
+        int val = arrayStack.Pop();
+        Console.WriteLine($">> {val}");
+        arrayStack2.Push(val);
+    }
 
 
     Console.WriteLine("== Moving stacks..");
@@ -45,6 +56,14 @@ static void TestStacks()
         int val = linkedStack2.Pop();
         Console.WriteLine($">> {val}");
         linkedStack.Push(val);
+    }
+
+    Console.WriteLine("Array");
+    while (!arrayStack2.IsEmpty)
+    {
+        int val = arrayStack2.Pop();
+        Console.WriteLine($">> {val}");
+        arrayStack.Push(val);
     }
 
     Console.WriteLine("== End.");
