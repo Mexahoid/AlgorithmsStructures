@@ -16,32 +16,28 @@ static void TestQueues()
 {
     Console.WriteLine("=== Queue tests.");
 
-    Console.WriteLine("== Making queues..");
+    Console.WriteLine("== Making linked queue..");
     IMyQueue<int> linkedQueue = new MyLinkedQueue<int>();
 
     int count = 10;
-    Console.WriteLine("== Filling queues..");
-    Console.WriteLine("Linked");
+    Console.WriteLine("== Filling..");
     for (int i = 0; i < count; i++)
     {
         linkedQueue.Enqueue(i);
     }
-
-    Console.WriteLine("== Clearing queues..");
-    Console.WriteLine("Linked");
+   
+    Console.WriteLine("== Clearing..");
     while (!linkedQueue.IsEmpty)
     {
         Console.WriteLine($">> {linkedQueue.Dequeue()}");
     }
 
-    Console.WriteLine("== Filling queues..");
-    Console.WriteLine("Linked");
+    Console.WriteLine("== Filling..");
     for (int i = 0; i < count; i++)
     {
         linkedQueue.Enqueue(i);
     }
-    Console.WriteLine("== Circulating queues..");
-    Console.WriteLine("Linked");
+    Console.WriteLine("== Circulating..");
     for (int i = 0; i < count; i++)
     {
         var val = linkedQueue.Dequeue();
@@ -49,11 +45,77 @@ static void TestQueues()
         linkedQueue.Enqueue(i);
     }
 
-    Console.WriteLine("== Clearing queues..");
-    Console.WriteLine("Linked");
+    Console.WriteLine("== Clearing..");
     for (int i = 0; i < count; i++)
     {
         Console.WriteLine($">> {linkedQueue.Dequeue()}");
+    }
+
+
+
+    Console.WriteLine("== Making deque..");
+
+    MyDeque<int> deque = new();
+
+    Console.WriteLine("== Filling from tail");
+    for (int i = 0; i < count; i++)
+    {
+        deque.Enqueue(i);
+    }
+    Console.WriteLine($"== Peek head {deque.Peek()}");
+    Console.WriteLine("== Filling from head");
+    for (int i = 0; i < count; i++)
+    {
+        deque.EnqueueHead(i * 10);
+    }
+    Console.WriteLine($"== Peek tail {deque.Peek()}");
+
+
+    Console.WriteLine("== Clearing from head");
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($">> {deque.Dequeue()}");
+    }
+    Console.WriteLine("== Clearing from tail");
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine($">> {deque.DequeueTail()}");
+    }
+    Console.WriteLine($"Empty: {deque.IsEmpty}");
+
+    Console.WriteLine("Deque filling tail");
+    for (int i = 0; i < count; i++)
+    {
+        deque.Enqueue(i);
+    }
+    Console.WriteLine("Deque filling head");
+    for (int i = 0; i < count; i++)
+    {
+        deque.EnqueueHead(i);
+    }
+
+    
+
+    Console.WriteLine("Deque forward");
+    for (int i = 0; i < count; i++)
+    {
+        var val = deque.Dequeue();
+        Console.WriteLine($">> {val}");
+        deque.Enqueue(i);
+    }
+    Console.WriteLine("Deque backward");
+    for (int i = 0; i < count; i++)
+    {
+        var val = deque.DequeueTail();
+        Console.WriteLine($">> {val}");
+        deque.EnqueueHead(i);
+    }
+
+
+    Console.WriteLine("Clearing from tail");
+    while (!deque.IsEmpty)
+    {
+        Console.WriteLine($">> {deque.DequeueTail()}");
     }
 
     Console.WriteLine("=== End.");

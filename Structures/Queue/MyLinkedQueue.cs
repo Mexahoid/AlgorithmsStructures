@@ -5,8 +5,8 @@ namespace Structures.Queue
 {
     public class MyLinkedQueue<T> : IMyQueue<T>
     {
-        private INode<T> _head;
-        private INode<T> _tail;
+        protected INode<T> _head;
+        protected INode<T> _tail;
 
         public MyLinkedQueue()
         {
