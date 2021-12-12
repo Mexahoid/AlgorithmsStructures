@@ -30,18 +30,51 @@ static void TestBinaryTree()
 
     Console.WriteLine("Deep first..");
     List<int> nlr = new();
-    myBinaryTree.DeepFirst(nlr, MyBinaryTree<int>.TreeSearchType.NLR);
+    int z = 0;
+    myBinaryTree.GetNodesDeepFirst(nlr, MyBinaryTree<int>.TreeSearchType.NLR, ref z);
     List<int> lnr = new();
-    myBinaryTree.DeepFirst(lnr, MyBinaryTree<int>.TreeSearchType.LNR);
+    myBinaryTree.GetNodesDeepFirst(lnr, MyBinaryTree<int>.TreeSearchType.LNR, ref z);
     List<int> lrn = new();
-    myBinaryTree.DeepFirst(lrn, MyBinaryTree<int>.TreeSearchType.LRN);
+    myBinaryTree.GetNodesDeepFirst(lrn, MyBinaryTree<int>.TreeSearchType.LRN, ref z);
     Console.WriteLine("Breadth first..");
     List<int> br = new();
-    myBinaryTree.BreadthFirst(br);
+    myBinaryTree.GetNodesBreadthFirst(br);
 
     for (int i = 0; i < nlr.Count; i++)
     {
         Console.WriteLine($"{nlr[i]}  --  {lnr[i]}  --  {lrn[i]}  ---  {br[i]}");
+    }
+    for (int i = 0; i < nlr.Count; i++)
+    {
+        z = 0;
+        bool f = myBinaryTree.FindNode(lnr[i], MyBinaryTree<int>.TreeSearchType.NLR, ref z);
+        Console.WriteLine($"{lnr[i]}: {(f ? "Found" : "Not Found")} as NLR in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(lnr[i], MyBinaryTree<int>.TreeSearchType.LNR, ref z);
+        Console.WriteLine($"{lnr[i]}: {(f ? "Found" : "Not Found")} as LNR in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(lnr[i], MyBinaryTree<int>.TreeSearchType.LRN, ref z);
+        Console.WriteLine($"{lnr[i]}: {(f ? "Found" : "Not Found")} as LRN in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(lnr[i], MyBinaryTree<int>.TreeSearchType.BR, ref z);
+        Console.WriteLine($"{lnr[i]}: {(f ? "Found" : "Not Found")} as Breadth in {z} steps\n");
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        int x = r.Next(0, 100);
+        z = 0;
+        bool f = myBinaryTree.FindNode(x, MyBinaryTree<int>.TreeSearchType.NLR, ref z);
+        Console.WriteLine($"{x}: {(f ? "Found" : "Not Found")} as NLR in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(x, MyBinaryTree<int>.TreeSearchType.LNR, ref z);
+        Console.WriteLine($"{x}: {(f ? "Found" : "Not Found")} as LNR in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(x, MyBinaryTree<int>.TreeSearchType.LRN, ref z);
+        Console.WriteLine($"{x}: {(f ? "Found" : "Not Found")} as LRN in {z} steps");
+        z = 0;
+        f = myBinaryTree.FindNode(x, MyBinaryTree<int>.TreeSearchType.BR, ref z);
+        Console.WriteLine($"{x}: {(f ? "Found" : "Not Found")} as Breadth in {z} steps\n");
     }
 
 }

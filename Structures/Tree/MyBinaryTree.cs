@@ -9,7 +9,9 @@ namespace Structures.Tree
         {
             NLR,
             LNR,
-            LRN
+            LRN,
+
+            BR
         }
 
         private class TreeNode
@@ -60,48 +62,107 @@ namespace Structures.Tree
             MyBinaryTree<T>.InsertDeep(_root, value);
         }
 
-        private void LeftRecurrent(TreeNode node, IList<T> input)
+        private bool LeftRecurrent(TreeNode node, IList<T> input, object value, ref int steps)
         {
-            if (node == null)
-                return;
-            input.Add(node.Value);
-            LeftRecurrent(node.Left, input);
-            LeftRecurrent(node.Right, input);
+            if (value == null)
+            {
+                if (node == null)
+                    return false;
+                input.Add(node.Value);
+                LeftRecurrent(node.Left, input, null, ref steps);
+                LeftRecurrent(node.Right, input, null, ref steps);
+                return false;
+            }
+            else
+            {
+                bool find;
+
+                if (node == null)
+                    return false;
+                steps++;
+                if (node.Value.Equals((T)value))
+                    return true;
+
+                find = LeftRecurrent(node.Left, input, value, ref steps);
+                if (find)
+                    return true;
+                find = LeftRecurrent(node.Right, input, value, ref steps);
+                return find;
+            }
         }
-        private void CenterRecurrent(TreeNode node, IList<T> input)
+        private bool CenterRecurrent(TreeNode node, IList<T> input, object value, ref int steps)
         {
-            if (node == null)
-                return;
-            CenterRecurrent(node.Left, input);
-            input.Add(node.Value);
-            CenterRecurrent(node.Right, input);
+            if (value == null)
+            {
+                if (node == null)
+                    return false;
+                CenterRecurrent(node.Left, input, null, ref steps);
+                input.Add(node.Value);
+                CenterRecurrent(node.Right, input, null, ref steps);
+                return false;
+            }
+            else
+            {
+                bool find;
+
+                if (node == null)
+                    return false;
+                steps++;
+                find = CenterRecurrent(node.Left, input, value, ref steps);
+
+                if (node.Value.Equals((T)value) || find)
+                    return true;
+
+                find = CenterRecurrent(node.Right, input, value, ref steps);
+                return find;
+            }
         }
-        private void RightRecurrent(TreeNode node, IList<T> input)
+        private bool RightRecurrent(TreeNode node, IList<T> input, object value, ref int steps)
         {
-            if (node == null)
-                return;
-            RightRecurrent(node.Left, input);
-            RightRecurrent(node.Right, input);
-            input.Add(node.Value);
+            if (value == null)
+            {
+                if (node == null)
+                    return false;
+                RightRecurrent(node.Left, input, null, ref steps);
+                RightRecurrent(node.Right, input, null, ref steps);
+                input.Add(node.Value);
+                return false;
+            }
+            else
+            {
+                bool find;
+                if (node == null)
+                    return false;
+                steps++;
+                find = RightRecurrent(node.Left, input, value, ref steps);
+                if (find)
+                    return true;
+                find = RightRecurrent(node.Right, input, value, ref steps);
+                if (node.Value.Equals((T)value) || find)
+                    return true;
+
+                return find;
+            }
+
         }
 
-        public void DeepFirst(IList<T> input, TreeSearchType type)
+        public void GetNodesDeepFirst(IList<T> input, TreeSearchType type, ref int steps)
         {
             switch (type)
             {
                 case TreeSearchType.NLR:
-                    LeftRecurrent(_root, input);
+                    LeftRecurrent(_root, input, null, ref steps);
                     break;
                 case TreeSearchType.LNR:
-                    CenterRecurrent(_root, input);
+                    CenterRecurrent(_root, input, null, ref steps);
                     break;
                 case TreeSearchType.LRN:
-                    RightRecurrent(_root, input);
+                    RightRecurrent(_root, input, null, ref steps);
                     break;
             }
         }
 
-        public void BreadthFirst(IList<T> input)
+        public void GetNodesBreadthFirst(IList<T> input)
         {
             MyLinkedQueue<TreeNode> queue = new();
             queue.Enqueue(_root);
@@ -114,6 +175,50 @@ namespace Structures.Tree
                 if (node.Right != null)
                     queue.Enqueue(node.Right);
             }
+        }
+
+        public bool FindNode(T value, TreeSearchType type, ref int steps)
+        {
+            switch (type)
+            {
+                case MyBinaryTree<T>.TreeSearchType.NLR:
+                    return LeftRecurrent(_root, null, value, ref steps);
+                case MyBinaryTree<T>.TreeSearchType.LNR:
+                    return CenterRecurrent(_root, null, value, ref steps);
+                case MyBinaryTree<T>.TreeSearchType.LRN:
+                    return RightRecurrent(_root, null, value, ref steps);
+                case MyBinaryTree<T>.TreeSearchType.BR:
+
+                    MyLinkedQueue<TreeNode> queue = new();
+                    queue.Enqueue(_root);
+                    while (!queue.IsEmpty)
+                    {
+                        steps++;
+                        TreeNode node = queue.Dequeue();
+                        if (node.Value.Equals(value))
+                            return true;
+                        if (node.Left != null)
+                            queue.Enqueue(node.Left);
+                        if (node.Right != null)
+                            queue.Enqueue(node.Right);
+                    }
+                    break;
+            }
+
+            return false;
+
+
+            /*MyLinkedQueue<TreeNode> queue = new();
+            queue.Enqueue(_root);
+            while (!queue.IsEmpty)
+            {
+                TreeNode node = queue.Dequeue();
+                input.Add(node.Value);
+                if (node.Left != null)
+                    queue.Enqueue(node.Left);
+                if (node.Right != null)
+                    queue.Enqueue(node.Right);
+            }*/
         }
     }
 }
