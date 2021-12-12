@@ -3,14 +3,49 @@ using Structures.List;
 using Structures.Stack;
 using Structures.Queue;
 using Structures.Tree;
+using Structures.Set;
 
 Console.WriteLine($"Hello, World!");
 
-TestBinaryTree();
+TestSets();
+//TestBinaryTree();
 //TestQueues();
 //TestLists();
 //TestStacks();
 
+static void TestSets()
+{
+    IMySet<int> sortedSet = new MySortedSet<int>();
+
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling sets..");
+    for (int i = 0; i < count; i++)
+    {
+        int x = r.Next(0, 100);
+        bool flag = sortedSet.Add(x);
+        if (!flag)
+            Console.WriteLine($"Already present: {x}");
+    }
+
+    int[] array = new int[count];
+
+    Console.WriteLine("Copying 10 elements..");
+    sortedSet.CopyTo(array, 10);
+    foreach (var item in array)
+    {
+        Console.WriteLine($"Set element: {item}");
+    }
+
+    Console.WriteLine("Copying all elements..");
+    sortedSet.CopyTo(array);
+    foreach (var item in array)
+    {
+        Console.WriteLine($"Set element: {item}");
+    }
+}
 
 static void TestBinaryTree()
 {
