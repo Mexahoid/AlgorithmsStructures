@@ -7,11 +7,43 @@ using Structures.Set;
 
 Console.WriteLine($"Hello, World!");
 
-TestSets();
+TestRBTree();
+//TestSets();
 //TestBinaryTree();
 //TestQueues();
 //TestLists();
 //TestStacks();
+
+static void TestRBTree()
+{
+    MyRBTree<int> tree = new();
+
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling RBTree..");
+    Console.WriteLine($"Empty: {tree.IsEmpty}");
+    MyLinkedList<int> mylist = new();
+
+    for (int i = 0; i < count; i++)
+    {
+        int x = r.Next(0, 100);
+        mylist.Add(x);
+        bool flag = tree.Insert(x);
+        if (!flag)
+            Console.WriteLine($"Already present: {x}");
+    }
+    Console.WriteLine($"Empty: {tree.IsEmpty}");
+    Console.WriteLine("Clearing RBTree..");
+    for (int i = 0; i < mylist.Count; i++)
+    {
+        Console.WriteLine($"{mylist[i]} is present: {tree.IsPresent(mylist[i])}");
+        tree.Delete(mylist[i]);
+    }
+    Console.WriteLine($"Empty: {tree.IsEmpty}");
+
+}
 
 static void TestSets()
 {
