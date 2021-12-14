@@ -44,16 +44,20 @@ namespace Structures.Set
                 if (cmp < 0 && (ptr.Next.Next == null || ptr.Next.Next.Value.CompareTo(value) > 0))
                 {
                     _count++;
-                    node = new SimpleNode<T>(value);
-                    node.Next = ptr.Next.Next;
+                    node = new SimpleNode<T>(value)
+                    {
+                        Next = ptr.Next.Next
+                    };
                     ptr.Next.Next = node;
                     return true;
                 }
                 if (cmp > 0)
                 {
                     _count++;
-                    node = new SimpleNode<T>(value);
-                    node.Next = ptr.Next;
+                    node = new SimpleNode<T>(value)
+                    {
+                        Next = ptr.Next
+                    };
                     ptr.Next = node;
                     return true;
                 }
@@ -86,18 +90,6 @@ namespace Structures.Set
         public void CopyTo(T[] array)
         {
             CopyTo(array, _count);
-            /*if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            if (array.Length < _count)
-                throw new ArgumentOutOfRangeException();
-            INode<T> ptr = _head;
-            int pointer = 0;
-
-            while (ptr != null)
-            {
-                array[pointer++] = ptr.Value;
-                ptr = ptr.Next;
-            }*/
         }
 
         public void CopyTo(T[] array, int amount)
