@@ -6,9 +6,14 @@ using Structures.Tree;
 using Structures.Set;
 using Structures.Dictionary;
 
+using Algorithms;
+
 Console.WriteLine($"Hello, World!");
 
-TestDictionary();
+
+TestBubbleSort();
+
+//TestDictionary();
 //TestRBTree();
 //TestSets();
 //TestBinaryTree();
@@ -16,6 +21,33 @@ TestDictionary();
 //TestLists();
 //TestStacks();
 
+
+static void TestBubbleSort()
+{
+    List<int> vs = new();
+
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling list..");
+    for (int i = 0; i < count; i++)
+    {
+        vs.Add(r.Next(0, 100));
+    }
+
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+    Console.WriteLine("Sorting list..");
+    Sort<int>.BubbleSort(vs);
+    Console.WriteLine("Printing list..");
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+}
 
 static void TestDictionary()
 {

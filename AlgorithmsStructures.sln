@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsStructures", "AlgorithmsStructures\AlgorithmsStructures.csproj", "{045EF279-1A04-4FDC-9932-099F8116B5BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsStructures", "AlgorithmsStructures\AlgorithmsStructures.csproj", "{045EF279-1A04-4FDC-9932-099F8116B5BB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9C63852B-D1C9-4BDA-88B2-D396470D66D4} = {9C63852B-D1C9-4BDA-88B2-D396470D66D4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structures", "Structures\Structures.csproj", "{9C63852B-D1C9-4BDA-88B2-D396470D66D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Structures", "Structures\Structures.csproj", "{9C63852B-D1C9-4BDA-88B2-D396470D66D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ADFBD31C-71DE-4319-892C-535E041A69B8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{A1A13FAB-0A60-4ADB-B4BC-7184B0CC39E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{9C63852B-D1C9-4BDA-88B2-D396470D66D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C63852B-D1C9-4BDA-88B2-D396470D66D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C63852B-D1C9-4BDA-88B2-D396470D66D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A13FAB-0A60-4ADB-B4BC-7184B0CC39E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A13FAB-0A60-4ADB-B4BC-7184B0CC39E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A13FAB-0A60-4ADB-B4BC-7184B0CC39E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A13FAB-0A60-4ADB-B4BC-7184B0CC39E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
