@@ -8,6 +8,13 @@ namespace Structures.List
         private int _ptr;
         private T[] _array;
 
+        public MyArrayList()
+        {
+            _size = 16;
+            _ptr = 0;
+            _array = new T[_size];
+        }
+
         public MyArrayList(int size)
         {
             if (size < 1)
