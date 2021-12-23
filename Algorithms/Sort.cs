@@ -18,6 +18,11 @@
             }
         }
 
+        public static void MergeSort(IList<T> input)
+        {
+            HelpMerge(input, 0, input.Count - 1);
+        }
+
         private static void HelpMerge(IList<T> input, int left, int right)
         {
             if (right - left > 1)
@@ -60,9 +65,43 @@
             }
         }
 
-        public static void MergeSort(IList<T> input)
+
+        public static void QuickSort(IList<T> input)
         {
-            HelpMerge(input, 0, input.Count - 1);
+            HelpQuick(input, 0, input.Count - 1);
+        }
+
+        private static void HelpQuick(IList<T> input, int left, int right)
+        {
+            if (left < right)
+            {
+                int pivot = HelpQuickPartition(input, left, right);
+                HelpQuick(input, left, pivot);
+                HelpQuick(input, pivot + 1, right);
+            }
+        }
+
+        private static int HelpQuickPartition(IList<T> input, int left, int right)
+        {
+            T pivot = input[(left + right) / 2];
+            int i = left;
+            int j = right;
+
+            while(true)
+            {
+                while (input[i].CompareTo(pivot) < 0)
+                    i++;
+                while (input[j].CompareTo(pivot) > 0)
+                    j--;
+                if (i >= j)
+                    return j;
+
+                var t = input[j];
+                input[j] = input[i];
+                input[i] = t;
+                i++;
+                j--;
+            }
         }
 
     }

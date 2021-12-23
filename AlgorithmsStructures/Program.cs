@@ -11,7 +11,8 @@ using Algorithms;
 Console.WriteLine($"Hello, World!");
 
 
-TestMergeSort();
+TestQuickSort();
+//TestMergeSort();
 //TestBubbleSort();
 
 //TestDictionary();
@@ -70,6 +71,33 @@ static void TestMergeSort()
     }
     Console.WriteLine("Sorting list..");
     Sort<int>.MergeSort(vs);
+    Console.WriteLine("Printing list..");
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+}
+
+static void TestQuickSort()
+{
+    List<int> vs = new();
+
+    Random r = new(1337);
+
+    int count = 21;
+
+    Console.WriteLine("Filling list..");
+    for (int i = 0; i < count; i++)
+    {
+        vs.Add(r.Next(0, 100));
+    }
+
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+    Console.WriteLine("Sorting list..");
+    Sort<int>.QuickSort(vs);
     Console.WriteLine("Printing list..");
     for (int i = 0; i < vs.Count; i++)
     {
