@@ -11,7 +11,8 @@ using Algorithms;
 Console.WriteLine($"Hello, World!");
 
 
-TestLinearSearch();
+TestBinarySearch();
+//TestLinearSearch();
 
 
 //TestQuickSort();
@@ -64,6 +65,38 @@ static void TestLinearSearch()
 
     if (ind != -1)
         Console.WriteLine($"Found in {steps} steps, index: {ind}");
+}
+
+
+static void TestBinarySearch()
+{
+    List<int> vs = new();
+
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling list..");
+    for (int i = 0; i < count; i++)
+    {
+        vs.Add(r.Next(0, 100));
+    }
+    Console.WriteLine("Sorting list..");
+    Sort<int>.QuickSort(vs);
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+
+    int num = r.Next(0, 100) % count;
+    Console.WriteLine($"Trying to find element: {vs[num]}");
+    int steps = 0;
+    int xx = vs[num];
+    int ind = Search<int>.BinarySearch(vs, xx, ref steps);
+
+    if (ind != -1)
+        Console.WriteLine($"Found in {steps} steps, index: {ind}");
+
 }
 
 static void TestBubbleSort()
