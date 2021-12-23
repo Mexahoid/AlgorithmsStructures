@@ -11,7 +11,8 @@ using Algorithms;
 Console.WriteLine($"Hello, World!");
 
 
-TestBubbleSort();
+TestMergeSort();
+//TestBubbleSort();
 
 //TestDictionary();
 //TestRBTree();
@@ -42,6 +43,33 @@ static void TestBubbleSort()
     }
     Console.WriteLine("Sorting list..");
     Sort<int>.BubbleSort(vs);
+    Console.WriteLine("Printing list..");
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+}
+
+static void TestMergeSort()
+{
+    List<int> vs = new();
+
+    Random r = new(1337);
+
+    int count = 20;
+
+    Console.WriteLine("Filling list..");
+    for (int i = 0; i < count; i++)
+    {
+        vs.Add(r.Next(0, 100));
+    }
+
+    for (int i = 0; i < vs.Count; i++)
+    {
+        Console.WriteLine($"> {vs[i]}");
+    }
+    Console.WriteLine("Sorting list..");
+    Sort<int>.MergeSort(vs);
     Console.WriteLine("Printing list..");
     for (int i = 0; i < vs.Count; i++)
     {
@@ -99,8 +127,6 @@ static void TestDictionary()
         Console.WriteLine($"{l[i]} - {dict[l[i]]}");
     }
 }
-
-
 
 static void TestRBTree()
 {
