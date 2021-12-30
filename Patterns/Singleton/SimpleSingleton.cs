@@ -8,7 +8,7 @@ namespace Patterns.Singleton
 {
     internal class SimpleSingleton
     {
-        private SimpleSingleton _instance;
+        private static SimpleSingleton _instance;
 
         public int Value { get; set; }
 
@@ -17,7 +17,7 @@ namespace Patterns.Singleton
 
         }
 
-        public SimpleSingleton Instance 
+        public static SimpleSingleton Instance 
         { 
             get
             {
