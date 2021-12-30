@@ -9,5 +9,7 @@ namespace Patterns.Singleton
     internal interface ISingleton
     {
         public static ISingleton Instance { get; }
+
+        public int Value { get; set; }
     }
 }
