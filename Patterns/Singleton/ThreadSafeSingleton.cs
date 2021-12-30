@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Patterns.Singleton
 {
-    internal class ThreadSafeSingleton
+    internal class ThreadSafeSingleton : ISingleton
     {
         private static ThreadSafeSingleton _instance;
 

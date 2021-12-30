@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Patterns.Singleton
 {
-    internal class LazySingleton
+    internal class LazySingleton : ISingleton
     {
         private class Nested
         {

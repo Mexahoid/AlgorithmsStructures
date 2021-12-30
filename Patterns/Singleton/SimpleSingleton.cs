@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Patterns.Singleton
 {
-    internal class SimpleSingleton
-    {
+    internal class SimpleSingleton : ISingleton
+    { 
         private static SimpleSingleton _instance;
 
         public int Value { get; set; }
