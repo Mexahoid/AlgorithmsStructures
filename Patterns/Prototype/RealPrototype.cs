@@ -8,7 +8,7 @@ namespace Patterns.Prototype
 {
     internal abstract class RealPrototype : IPrototype
     {
-        private (int x, int y) _point;
+        protected (int x, int y) _point;
 
         public RealPrototype(int x, int y)
         {
