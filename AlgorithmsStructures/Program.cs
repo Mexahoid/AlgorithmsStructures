@@ -8,10 +8,16 @@ using Structures.Dictionary;
 
 using Algorithms;
 
+using Patterns;
+
 Console.WriteLine($"Hello, World!");
 
 
-TestBinarySearch();
+Patterns.Logic.Show();
+
+
+
+//TestBinarySearch();
 //TestLinearSearch();
 
 
