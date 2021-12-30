@@ -15,7 +15,7 @@ namespace Patterns.Prototype
             _point = (x, y);
         }
 
-        public RealPrototype(RealPrototype source)
+        protected RealPrototype(RealPrototype source)
         {
             _point.x = source._point.x;
             _point.y = source._point.y;
