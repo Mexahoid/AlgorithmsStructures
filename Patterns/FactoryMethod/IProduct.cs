@@ -8,6 +8,6 @@ namespace Patterns.FactoryMethod
 {
     internal interface IProduct
     {
-        public void Operate();
+        public void Operate(Action<string> printer);
     }
 }
