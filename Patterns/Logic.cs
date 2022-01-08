@@ -10,9 +10,11 @@
             //Console.WriteLine("Prototype:");
             //Prototype.Example.Show();
 
+            //Console.WriteLine("Factory method:");
+            //FactoryMethod.Example.Show();
 
-            Console.WriteLine("Factory method:");
-            FactoryMethod.Example.Show();
+            Console.WriteLine("Abstract factory:");
+            AbstractFactory.Example.Show();
         }
     }
 }
