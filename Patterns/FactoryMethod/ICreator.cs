@@ -8,6 +8,6 @@ namespace Patterns.FactoryMethod
 {
     internal interface ICreator
     {
-        IProduct CreateProduct();
+        public IProduct CreateProduct();
     }
 }
