@@ -8,6 +8,6 @@ namespace Patterns.AbstractFactory.ProductA
 {
     internal interface IProductA
     {
-        public string Name { get; set; }
+        public string Name { get; }
     }
 }
