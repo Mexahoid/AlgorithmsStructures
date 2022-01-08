@@ -13,8 +13,11 @@
             //Console.WriteLine("Factory method:");
             //FactoryMethod.Example.Show();
 
-            Console.WriteLine("Abstract factory:");
-            AbstractFactory.Example.Show();
+            //Console.WriteLine("Abstract factory:");
+            //AbstractFactory.Example.Show();
+
+            Console.WriteLine("Builder:");
+            Builder.Example.Show();
         }
     }
 }
