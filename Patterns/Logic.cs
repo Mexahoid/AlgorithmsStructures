@@ -7,8 +7,12 @@
             //Console.WriteLine("Singletons:");
             //Singleton.Example.Show();
 
-            Console.WriteLine("Prototype:");
-            Prototype.Example.Show();
+            //Console.WriteLine("Prototype:");
+            //Prototype.Example.Show();
+
+
+            Console.WriteLine("Factory method:");
+            FactoryMethod.Example.Show();
         }
     }
 }
