@@ -12,12 +12,12 @@ namespace Patterns.AbstractFactory
     {
         public IProductA CreateProductA()
         {
-            return new ProductA1();
+            return new ProductA2();
         }
 
         public IProductB CreateProductB()
         {
-            return new ProductB1();
+            return new ProductB2();
         }
     }
 }
