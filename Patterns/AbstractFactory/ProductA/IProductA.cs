@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Patterns.AbstractFactory
+namespace Patterns.AbstractFactory.ProductA
 {
     internal interface IProductA
     {
